@@ -19,3 +19,18 @@ Commands:
 - init: Creates a hidden directory .mgit where all the internal working takes place.
 - hash-object: It takes a file as an argument and creates a blob object for it inside ./.mgit/objects/
 - cat-file: It takes the sha-1 value for the object and outputs its content.
+
+# Development
+If you plan to modify the source code. Below is one handy shorcut for compiling your files.
+Add following function to your bashrc.
+```
+# run kotlin file
+    kr(){
+        filename=${1%.*}
+        kotlinc ${filename}.kt -include-runtime -d ${filename}.jar
+        shift 1
+        java -jar ${filename}.jar $@
+     }
+```     
+Note: Don't provide it the extension .kt with your file. It automatically adds it.
+So the usage is ```kt mgit```.
